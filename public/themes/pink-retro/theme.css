@@ -1,0 +1,137 @@
+/* pink retro ♥ — cute pixel-windows theme: chunky bevels, pixel fonts, hearts */
+
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&family=VT323&display=swap");
+
+:root {
+  --font-ui: "Pixelify Sans", "Comic Sans MS", cursive;
+  --font-body: "VT323", "Courier New", monospace;
+  --font-mono: "VT323", "Courier New", monospace;
+  --body-size: 19px;
+
+  --window-title: "claude.exe";
+  --titlebar-icon: "\1F4BE"; /* 💾 */
+
+  --desktop-bg: radial-gradient(#ffffff 12%, transparent 13%) 0 0 / 26px 26px, #fbd9e9;
+  --window-bg: #f6bcd8;
+  --window-border: #a05590;
+  --window-shadow: 7px 7px 0 rgba(160, 85, 144, 0.35);
+  --bevel-light: #ffe4f1;
+  --bevel-dark: #db93bd;
+
+  --titlebar-bg: linear-gradient(#f39fcb, #f7bcd9);
+  --titlebar-text: #832d68;
+  --tb-btn-bg: #fbd1e5;
+  --tb-btn-border: #a05590;
+  --tb-btn-text: #832d68;
+
+  --menubar-bg: #fbd3e6;
+  --menu-text: #832d68;
+  --menu-hover-bg: #ef92bf;
+  --menu-hover-text: #ffffff;
+  --menu-drop-bg: #fde4ef;
+  --menu-drop-border: #a05590;
+
+  --content-bg: #fff7fb;
+  --content-border: #d791bb;
+  --text: #4a2b40;
+  --muted: #b06f96;
+  --accent: #e75ba4;
+  --link: #c73a8b;
+
+  --bubble-user-bg: #ffd2e6;
+  --bubble-user-border: #ef92bf;
+  --bubble-user-text: #6b2a52;
+  --bubble-ai-bg: #f1e6ff;
+  --bubble-ai-border: #c9a6e8;
+  --bubble-ai-text: #4a2b5e;
+  --bubble-shadow: 3px 3px 0 rgba(160, 85, 144, 0.25);
+
+  --code-bg: #43284a;
+  --code-text: #ffd7ef;
+  --inline-code-bg: rgba(231, 91, 164, 0.15);
+
+  --composer-bg: #fbd3e6;
+  --input-bg: #fff7fb;
+  --input-border: #d791bb;
+  --send-bg: #f6a1cd;
+  --send-text: #ffffff;
+  --send-border: #a05590;
+
+  --statusbar-bg: #fbd3e6;
+  --statusbar-text: #98487c;
+
+  --scrollbar-thumb: #f0a1c9;
+  --scrollbar-track: #fde4ef;
+
+  /* pixel cursors: plum arrow, heart pointer, plum I-beam (inline SVG art) */
+  --cursor-default: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24' shape-rendering='crispEdges'><polygon points='3,1 3,18 7,14 10,21 13,20 10,13 16,13' fill='%23fff0f7' stroke='%23832d68' stroke-width='2'/></svg>") 3 1, auto;
+  --cursor-pointer: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='21' height='18' viewBox='0 0 7 6' shape-rendering='crispEdges'><g fill='%23e75ba4'><rect x='1' y='0' width='2' height='1'/><rect x='4' y='0' width='2' height='1'/><rect x='0' y='1' width='7' height='2'/><rect x='1' y='3' width='5' height='1'/><rect x='2' y='4' width='3' height='1'/><rect x='3' y='5' width='1' height='1'/></g><rect x='1' y='1' width='1' height='1' fill='%23ffb1d8'/></svg>") 10 9, pointer;
+  --cursor-text: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='22' viewBox='0 0 14 22' shape-rendering='crispEdges'><g fill='%23832d68'><rect x='2' y='0' width='10' height='3'/><rect x='6' y='3' width='3' height='16'/><rect x='2' y='19' width='10' height='3'/></g></svg>") 7 11, text;
+}
+
+/* pixel crispness */
+* { image-rendering: pixelated; }
+
+/* hearts in the title bar, like the reference */
+.titlebar-hearts {
+  display: inline;
+  color: #e75ba4;
+  letter-spacing: 3px;
+  margin-right: 6px;
+  text-shadow: 1px 1px 0 #ffffff;
+}
+
+.titlebar-title::before { letter-spacing: 1px; }
+
+/* beveled buttons everywhere */
+.tb-btn,
+#send {
+  box-shadow: inset -2px -2px 0 var(--bevel-dark), inset 2px 2px 0 var(--bevel-light);
+}
+.tb-btn:active,
+#send:active {
+  box-shadow: inset 2px 2px 0 var(--bevel-dark), inset -2px -2px 0 var(--bevel-light);
+}
+
+#send::after { content: " \2665"; }
+
+/* chunky pixel scrollbar */
+.chat::-webkit-scrollbar { width: 16px; }
+.chat::-webkit-scrollbar-thumb {
+  border: 3px solid var(--scrollbar-track);
+  box-shadow: inset -2px -2px 0 rgba(160, 85, 144, 0.4);
+}
+
+/* message authors get little hearts */
+.msg.assistant .msg-author::before { content: "\2665 "; color: #c9a6e8; }
+.msg.user .msg-author::after { content: " \2665"; color: #ef92bf; }
+
+/* typing dots are hearts here */
+.typing span {
+  width: auto;
+  height: auto;
+  background: none;
+}
+.typing span::before { content: "\2665"; color: var(--accent); font-size: 15px; }
+
+/* status bar cells like retro word processor */
+.status-cell {
+  box-shadow: inset 1px 1px 0 rgba(160, 85, 144, 0.25), inset -1px -1px 0 #ffffff;
+  border-color: #e2a5c8;
+}
+
+/* menus pop with a hard pixel shadow */
+.menu-drop { box-shadow: 4px 4px 0 rgba(160, 85, 144, 0.3); }
+
+/* soft sparkle on the desktop corners */
+.desktop { position: relative; }
+.desktop::before,
+.desktop::after {
+  position: absolute;
+  font-size: 26px;
+  color: #f099c6;
+  text-shadow: 2px 2px 0 #ffffff;
+  pointer-events: none;
+}
+.desktop::before { content: "\2665 \00b7 \2665"; top: 14px; left: 22px; }
+.desktop::after { content: "\2726 \2665 \2726"; bottom: 14px; right: 22px; }

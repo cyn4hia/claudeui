@@ -1,0 +1,13 @@
+{
+  "name": "claudeui-wrapper",
+  "version": "1.0.0",
+  "description": "Electron wrapper around claude.ai with interchangeable retro themes",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^37.0.0"
+  }
+}

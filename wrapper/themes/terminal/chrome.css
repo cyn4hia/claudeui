@@ -1,0 +1,71 @@
+/* green terminal — window chrome: phosphor glow, blocky cursor */
+
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+:root {
+  --font-ui: "VT323", "Courier New", monospace;
+
+  --window-title: "claude@retro:~ $";
+  --titlebar-icon: "\25B8";
+
+  --window-bg: #0a120a;
+  --window-border: #2fbf4f;
+  --bevel-light: #123f1c;
+  --bevel-dark: #041004;
+
+  --titlebar-bg: #0f1f0f;
+  --titlebar-text: #5dff7f;
+  --tb-btn-bg: #0f1f0f;
+  --tb-btn-border: #2fbf4f;
+  --tb-btn-text: #5dff7f;
+
+  --menubar-bg: #0a160a;
+  --menu-text: #4fdd6f;
+  --menu-hover-bg: #1d7c34;
+  --menu-hover-text: #dfffe4;
+  --menu-drop-bg: #081308;
+  --menu-drop-border: #2fbf4f;
+  --menu-drop-shadow: 0 0 14px rgba(47, 191, 79, 0.35);
+
+  --content-bg: #050b05;
+  --content-border: #1d7c34;
+  --content-note-color: #3f9c55;
+
+  --muted: #3f9c55;
+  --statusbar-bg: #0a160a;
+  --statusbar-text: #3f9c55;
+}
+
+/* bigger for VT323 legibility */
+.menu-label, .menu-item { font-size: 17px; }
+.statusbar { font-size: 15px; }
+.titlebar { font-size: 17px; }
+
+/* phosphor glow */
+.titlebar-title::before,
+.menu-label {
+  text-shadow: 0 0 6px rgba(93, 255, 127, 0.5);
+}
+
+/* CRT scanlines over the chrome */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* pixel cursors: green arrow, crosshair pointer, green I-beam */
+:root {
+  --cursor-default: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24' shape-rendering='crispEdges'><polygon points='3,1 3,18 7,14 10,21 13,20 10,13 16,13' fill='%23050b05' stroke='%235dff7f' stroke-width='2'/></svg>") 3 1, auto;
+  --cursor-pointer: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'><g fill='%235dff7f'><rect x='8' y='0' width='4' height='20'/><rect x='0' y='8' width='20' height='4'/></g><rect x='8' y='8' width='4' height='4' fill='%23050b05'/></svg>") 10 10, pointer;
+  --cursor-text: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='22' viewBox='0 0 14 22' shape-rendering='crispEdges'><g fill='%235dff7f'><rect x='2' y='0' width='10' height='3'/><rect x='6' y='3' width='3' height='16'/><rect x='2' y='19' width='10' height='3'/></g></svg>") 7 11, text;
+}

@@ -1,0 +1,108 @@
+/* green terminal — proof that themes swap cleanly. phosphor glow, scanlines. */
+
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+:root {
+  --font-ui: "VT323", "Courier New", monospace;
+  --font-body: "VT323", "Courier New", monospace;
+  --font-mono: "VT323", "Courier New", monospace;
+  --body-size: 20px;
+
+  --window-title: "claude@retro:~ $";
+  --titlebar-icon: "\25B8";
+
+  --desktop-bg: #050805;
+  --window-bg: #0a120a;
+  --window-border: #2fbf4f;
+  --window-shadow: 0 0 28px rgba(47, 191, 79, 0.35);
+  --bevel-light: #123f1c;
+  --bevel-dark: #041004;
+
+  --titlebar-bg: #0f1f0f;
+  --titlebar-text: #5dff7f;
+  --tb-btn-bg: #0f1f0f;
+  --tb-btn-border: #2fbf4f;
+  --tb-btn-text: #5dff7f;
+
+  --menubar-bg: #0a160a;
+  --menu-text: #4fdd6f;
+  --menu-hover-bg: #1d7c34;
+  --menu-hover-text: #dfffe4;
+  --menu-drop-bg: #081308;
+  --menu-drop-border: #2fbf4f;
+
+  --content-bg: #050b05;
+  --content-border: #1d7c34;
+  --text: #baffc4;
+  --muted: #3f9c55;
+  --accent: #5dff7f;
+  --link: #7dff9b;
+
+  --bubble-user-bg: #0d1d0d;
+  --bubble-user-border: #2fbf4f;
+  --bubble-user-text: #d2ffd9;
+  --bubble-ai-bg: #081408;
+  --bubble-ai-border: #1d7c34;
+  --bubble-ai-text: #baffc4;
+  --bubble-shadow: 0 0 10px rgba(47, 191, 79, 0.15);
+
+  --code-bg: #001400;
+  --code-text: #7dff9b;
+  --inline-code-bg: rgba(93, 255, 127, 0.12);
+
+  --composer-bg: #0a160a;
+  --input-bg: #050b05;
+  --input-border: #1d7c34;
+  --send-bg: #123f1c;
+  --send-text: #5dff7f;
+  --send-border: #2fbf4f;
+
+  --statusbar-bg: #0a160a;
+  --statusbar-text: #3f9c55;
+
+  --scrollbar-thumb: #1d7c34;
+  --scrollbar-track: #081308;
+
+  /* pixel cursors: green arrow, crosshair pointer, green I-beam (inline SVG art) */
+  --cursor-default: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24' shape-rendering='crispEdges'><polygon points='3,1 3,18 7,14 10,21 13,20 10,13 16,13' fill='%23050b05' stroke='%235dff7f' stroke-width='2'/></svg>") 3 1, auto;
+  --cursor-pointer: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'><g fill='%235dff7f'><rect x='8' y='0' width='4' height='20'/><rect x='0' y='8' width='20' height='4'/></g><rect x='8' y='8' width='4' height='4' fill='%23050b05'/></svg>") 10 10, pointer;
+  --cursor-text: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='22' viewBox='0 0 14 22' shape-rendering='crispEdges'><g fill='%235dff7f'><rect x='2' y='0' width='10' height='3'/><rect x='6' y='3' width='3' height='16'/><rect x='2' y='19' width='10' height='3'/></g></svg>") 7 11, text;
+}
+
+/* prompt-style author labels */
+.msg.user .msg-author::before { content: "> "; }
+.msg.assistant .msg-author::before { content: "$ "; }
+
+/* blocky cursor next to the send button */
+#send::after {
+  content: "\2588";
+  margin-left: 6px;
+  animation: cursor-blink 1.1s steps(1) infinite;
+}
+@keyframes cursor-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+/* CRT scanlines over everything */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.18) 0px,
+    rgba(0, 0, 0, 0.18) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* glow on text */
+.titlebar-title::before,
+.menu-label,
+#send {
+  text-shadow: 0 0 6px rgba(93, 255, 127, 0.5);
+}

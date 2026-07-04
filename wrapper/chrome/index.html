@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>claude.exe</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" id="theme-css" href="">
+</head>
+<body>
+  <div class="titlebar">
+    <div class="titlebar-left">
+      <span class="titlebar-icon" aria-hidden="true"></span>
+      <span class="titlebar-title"></span>
+    </div>
+    <span class="titlebar-hearts" aria-hidden="true">&hearts; &hearts; &hearts;</span>
+    <div class="titlebar-buttons">
+      <button class="tb-btn" id="btn-min" title="minimize">&ndash;</button>
+      <button class="tb-btn" id="btn-max" title="maximize">&#9633;</button>
+      <button class="tb-btn tb-close" id="btn-close" title="close">&#10005;</button>
+    </div>
+  </div>
+
+  <nav class="menubar">
+    <div class="menu">
+      <button class="menu-label">File</button>
+      <div class="menu-drop">
+        <button class="menu-item" data-nav="new-chat">New Chat</button>
+        <button class="menu-item" data-nav="reload">Reload</button>
+        <button class="menu-item" id="menu-quit">Quit</button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="menu-label">Edit</button>
+      <div class="menu-drop">
+        <button class="menu-item" disabled>Undo (no regrets)</button>
+        <button class="menu-item" disabled>Redo (still none)</button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="menu-label">View</button>
+      <div class="menu-drop">
+        <button class="menu-item" data-nav="back">&larr; Back</button>
+        <button class="menu-item" data-nav="forward">&rarr; Forward</button>
+        <button class="menu-item" id="menu-max">Toggle Maximize</button>
+        <button class="menu-item" data-nav="devtools">DevTools (claude.ai)</button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="menu-label">Theme</button>
+      <div class="menu-drop" id="theme-menu"></div>
+    </div>
+  </nav>
+
+  <main id="content">
+    <div class="content-note">&hearts; loading claude &hearts;</div>
+  </main>
+
+  <footer class="statusbar">
+    <span class="status-cell" id="status-left">ready</span>
+    <span class="status-cell" id="status-url">claude.ai</span>
+    <span class="status-cell">theme: <span id="status-theme"></span></span>
+  </footer>
+
+  <script src="chrome.js"></script>
+</body>
+</html>

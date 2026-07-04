@@ -1,0 +1,106 @@
+/* green terminal — skin injected into claude.ai. Same token-override
+   technique as pink-retro, but phosphor green on black. */
+
+:root,
+html,
+.light,
+.dark,
+[data-mode="light"],
+[data-mode="dark"] {
+  /* backgrounds: near-black greens */
+  --bg-000: 120 30% 3% !important;
+  --bg-100: 120 28% 5% !important;
+  --bg-200: 120 26% 7% !important;
+  --bg-300: 121 24% 10% !important;
+  --bg-400: 122 22% 13% !important;
+  --bg-500: 123 20% 17% !important;
+
+  /* text: phosphor greens */
+  --text-000: 130 100% 88% !important;
+  --text-100: 130 90% 80% !important;
+  --text-200: 130 75% 70% !important;
+  --text-300: 130 60% 60% !important;
+  --text-400: 130 50% 50% !important;
+  --text-500: 130 40% 42% !important;
+
+  /* borders */
+  --border-100: 132 55% 28% !important;
+  --border-200: 132 55% 32% !important;
+  --border-300: 133 60% 38% !important;
+  --border-400: 134 65% 44% !important;
+
+  /* accents: bright green */
+  --accent-main-000: 135 85% 45% !important;
+  --accent-main-100: 135 90% 52% !important;
+  --accent-main-200: 136 95% 60% !important;
+  --accent-secondary-000: 135 85% 45% !important;
+  --accent-secondary-100: 135 90% 52% !important;
+  --accent-secondary-200: 136 95% 60% !important;
+  --accent-pro-000: 135 85% 45% !important;
+  --accent-pro-100: 135 90% 52% !important;
+  --accent-pro-200: 136 95% 60% !important;
+
+  --oncolor-100: 120 30% 4% !important;
+}
+
+/* everything is terminal type */
+body,
+button,
+input,
+textarea,
+select,
+pre,
+code,
+kbd,
+[class*="font-sans"],
+[class*="font-serif"],
+[class*="font-display"],
+[class*="font-claude"],
+[class*="font-mono"] {
+  font-family: "VT323", "Courier New", monospace !important;
+}
+
+/* hard corners */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* dark scrollbars */
+*::-webkit-scrollbar { width: 14px; height: 14px; }
+*::-webkit-scrollbar-track { background: #081308; }
+*::-webkit-scrollbar-thumb { background: #1d7c34; border: 3px solid #081308; }
+
+::selection {
+  background: #1d7c34 !important;
+  color: #dfffe4 !important;
+}
+
+/* CRT scanlines */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0px,
+    rgba(0, 0, 0, 0.2) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+}
+
+/* themed pixel cursors inside claude.ai too */
+html, body, * {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='24' viewBox='0 0 20 24' shape-rendering='crispEdges'><polygon points='3,1 3,18 7,14 10,21 13,20 10,13 16,13' fill='%23050b05' stroke='%235dff7f' stroke-width='2'/></svg>") 3 1, auto;
+}
+button, a, [role="button"], [role="menuitem"], [role="option"], [role="tab"], [role="link"], summary, label,
+button *, a * {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'><g fill='%235dff7f'><rect x='8' y='0' width='4' height='20'/><rect x='0' y='8' width='20' height='4'/></g><rect x='8' y='8' width='4' height='4' fill='%23050b05'/></svg>") 10 10, pointer !important;
+}
+textarea, input, [contenteditable="true"], [contenteditable=""], [contenteditable] * {
+  cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='22' viewBox='0 0 14 22' shape-rendering='crispEdges'><g fill='%235dff7f'><rect x='2' y='0' width='10' height='3'/><rect x='6' y='3' width='3' height='16'/><rect x='2' y='19' width='10' height='3'/></g></svg>") 7 11, text !important;
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>claude.exe</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💗</text></svg>">
+  <link rel="stylesheet" href="/base.css">
+  <link rel="stylesheet" id="theme-css" href="">
+</head>
+<body>
+  <div class="desktop">
+    <div class="window" id="window">
+      <div class="titlebar">
+        <div class="titlebar-left">
+          <span class="titlebar-icon" aria-hidden="true"></span>
+          <span class="titlebar-title"></span>
+        </div>
+        <span class="titlebar-hearts" aria-hidden="true">&hearts; &hearts; &hearts;</span>
+        <div class="titlebar-buttons">
+          <button class="tb-btn" id="btn-min" title="minimize">&ndash;</button>
+          <button class="tb-btn" id="btn-max" title="maximize">&#9633;</button>
+          <button class="tb-btn tb-close" id="btn-close" title="close">&#10005;</button>
+        </div>
+      </div>
+
+      <div class="window-body">
+        <nav class="menubar">
+          <div class="menu">
+            <button class="menu-label">File</button>
+            <div class="menu-drop">
+              <button class="menu-item" id="menu-new">New Chat</button>
+              <button class="menu-item" id="menu-export">Export Chat&hellip;</button>
+            </div>
+          </div>
+          <div class="menu">
+            <button class="menu-label">Edit</button>
+            <div class="menu-drop">
+              <button class="menu-item" disabled>Undo (no regrets)</button>
+              <button class="menu-item" disabled>Redo (still none)</button>
+            </div>
+          </div>
+          <div class="menu">
+            <button class="menu-label">View</button>
+            <div class="menu-drop">
+              <button class="menu-item" id="menu-fullscreen">Toggle Maximize</button>
+            </div>
+          </div>
+          <div class="menu">
+            <button class="menu-label">Theme</button>
+            <div class="menu-drop" id="theme-menu"></div>
+          </div>
+        </nav>
+
+        <main class="chat" id="chat" aria-live="polite"></main>
+
+        <form class="composer" id="composer">
+          <textarea id="input" rows="2" placeholder="type something…" autocomplete="off"></textarea>
+          <button type="submit" id="send">send</button>
+        </form>
+
+        <footer class="statusbar">
+          <span class="status-cell" id="status-left">ready</span>
+          <span class="status-cell" id="status-usage"></span>
+          <span class="status-cell" id="status-model"></span>
+          <span class="status-cell">theme: <span id="status-theme"></span></span>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

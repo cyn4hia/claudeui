@@ -1,0 +1,14 @@
+{
+  "name": "claudeui",
+  "version": "1.0.0",
+  "description": "A themeable chat UI for Claude, powered by your local Claude app login",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "login": "node login.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "latest"
+  }
+}
